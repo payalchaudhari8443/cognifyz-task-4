@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 4 - Complex Validation & DOM Manipulation</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <button onclick="showSection('form')">Form</button>
+        <button onclick="showSection('about')">About</button>
+    </nav>
+
+    <!-- Sections -->
+    <div id="form-section" class="section active">
+        <h1>Registration Form</h1>
+        <form id="registrationForm" action="/submit" method="POST" onsubmit="return validateForm(event)">
+            <div>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <span id="usernameFeedback" class="feedback"></span>
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <span id="emailFeedback" class="feedback"></span>
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required oninput="checkPasswordStrength()">
+                <span id="passwordFeedback" class="feedback"></span>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+        <% if (message) { %>
+            <p class="success"><%= message %></p>
+        <% } %>
+    </div>
+
+    <div id="about-section" class="section">
+        <h1>About Task 4</h1>
+        <p>This task demonstrates complex form validation and dynamic DOM updates.</p>
+    </div>
+
+    <script src="/script.js"></script>
+</body>
+</html>
